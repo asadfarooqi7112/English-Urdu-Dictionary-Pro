@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Name and Language -->
+    <string name="in_app_name">ڈکشنری</string>
+    <string name="english">انگریزی</string>
+    <string name="urdu">اردو</string>
+    <string name="chooseLanguage">زبان کا انتخاب کریں</string>
+    <string name="change_app_language">ایپ کی زبان تبدیل کریں</string>
+
+    <!-- Main Navigation -->
+    <string name="translate">ترجمہ کریں</string>
+    <string name="OCR">او سی آر</string>
+    <string name="ocrImageToText">او سی آر (تصویر سے متن)</string>
+    <string name="favorites">پسندیدہ</string>
+    <string name="quizzes">کوئزز</string>
+    <string name="history">تاریخ</string>
+    <string name="clear_history">تاریخ صاف کریں</string>
+    <string name="no_search_history">ابھی تک کوئی تلاش کی تاریخ نہیں ہے۔</string>
+
+    <!-- Word of the Day and Input -->
+    <string name="wordOfTheDayHeading">آج کا لفظ</string>
+    <string name="typeHere">یہاں لکھیں…</string>
+
+    <!-- Favorites -->
+    <string name="no_favorites_message">ابھی تک کوئی پسندیدہ الفاظ نہیں۔ کچھ شامل کریں!</string>
+    <string name="example_favorite_word">مثال پسندیدہ لفظ</string>
+
+    <!-- Quizzes -->
+    <string name="quizOptions">کوئز کے اختیارات</string>
+    <string name="wordMeaningQuiz">لفظ کے معنی کوئز</string>
+    <string name="synonymsAntonymsQuiz">مترادفات/متضاد الفاظ کوئز</string>
+    <string name="spellingQuiz">املا کوئز</string>
+    <string name="word_meaning_quiz">الفاظ کے معنی کا کوئز</string>
+    <string name="choose_your_quiz">اپنا کوئز منتخب کریں</string>
+    <string name="synonyms_antonyms_quiz">مترادفات/متضاد الفاظ کا کوئز</string>
+    <string name="spelling_test">ہجے کا امتحان</string>
+    <string name="word_completion_quiz">لفظ مکمل کرنے کا کوئز</string>
+    <string name="timed_quiz">مقررہ وقت کا کوئز</string>
+    <string name="favorite_words_quiz">پسندیدہ الفاظ کا کوئز</string>
+
+    <!-- Quiz Progress -->
+    <string name="word_progress">لفظ 1/10</string>
+    <string name="spelling_progress">املا 1/10</string>
+    <string name="challenge_progress">چیلنج 1/10</string>
+    <string name="question_progress">سوال 1/10</string>
+    <string name="question_counter">سوال %1$d کا %2$d</string>
+    <string name="quiz_score">اسکور: %d</string>
+    <string name="score_progress">اسکور: 0</string>
+
+    <!-- Quiz Interaction -->
+    <string name="word">لفظ</string>
+    <string name="meaning_placeholder">لفظ کا مطلب یہاں ظاہر ہوگا۔</string>
+    <string name="meaning_to_spell">جس لفظ کو بولنا ہے اس کا مطلب</string>
+    <string name="hint">اشارہ</string>
+    <string name="get_hint">اشارہ حاصل کریں</string>
+    <string name="check_spelling">املا چیک کریں</string>
+    <string name="submit_answer">جواب جمع کروائیں</string>
+    <string name="next_question">اگلا سوال</string>
+    <string name="next_word">اگلا لفظ</string>
+    <string name="feedback_placeholder">رائے یہاں ظاہر ہوگی۔</string>
+    <string name="find_synonym">مترادف تلاش کریں</string>
+    <string name="spell_word_instruction">اس معنی کے لیے لفظ کے ہجے کریں:</string>
+    <string name="complete_word_prompt">اس معنی کے لیے لفظ مکمل کریں:</string>
+
+    <!-- Quiz Completion -->
+    <string name="quiz_complete">کوئز مکمل ہو گیا!</string>
+    <string name="your_score">آپ کا اسکور: 0/0</string>
+    <string name="play_again">دوبارہ کھیلیں</string>
+    <string name="go_home">گھر جائیں</string>
+
+    <!-- Object & Image Recognition -->
+    <string name="objectRecognition">اشیاء کی پہچان</string>
+    <string name="object_recognition2">اشیاء کی\nپہچان</string>
+    <string name="imageLabelling">تصویر کی لیبلنگ</string>
+    <string name="imageRecognition">تصویر کی پہچان</string>
+    <string name="imageDialogBoxTitle">تصویر کا انتخاب</string>
+    <string name="imageDialogBoxMessage">گیلری سے تصویر منتخب کریں یا کیمرے سے تصویر لیں۔</string>
+    <string name="camera">کیمرہ</string>
+    <string name="gallery">گیلری</string>
+    <string name="detected_text_here">پہچانا گیا متن یہاں</string>
+
+    <!-- Translation & Errors -->
+    <string name="translation_failed">ترجمہ ناکام ہوگیا: %1$s</string>
+
+    <!-- Misc -->
+    <string name="downloadingContentMessage">وسائل ڈاؤن لوڈ ہو رہے ہیں… براہ کرم انتظار کریں…</string>
+    <string name="exit">باہر نکلیں</string>
+
+    <string name="image_labeling_explanation">
+    * تصویری لیبلنگ: پوری تصویر کو ایک لیبل تفویض کرتا ہے، جیسے \'ساحل\'، \'کھانا\'، یا \'فطرت\'۔\n\n
+    * آبجیکٹ کی شناخت: تصویر کے اندر مخصوص اشیاء کا پتہ لگاتا ہے اور ان کی شناخت کرتا ہے، جیسے کتا، کار، یا درخت، اور اکثر ان کا مقام بھی بتاتا ہے۔\n\n
+    * یہ ماڈل بنیادی سطح کی فعالیت فراہم کرتا ہے۔ ہم اسے مزید درست نتائج کے لیے بہتر بنانے پر کام کر رہے ہیں۔\n\n
+    * نتیجہ: شناخت شدہ لیبل یہاں ظاہر ہوں گے۔
+    </string>
+
+</resources>

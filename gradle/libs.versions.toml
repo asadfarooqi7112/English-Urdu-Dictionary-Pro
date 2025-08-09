@@ -1,0 +1,42 @@
+[versions]
+agp = "8.8.2"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
+activity = "1.10.1"
+constraintlayout = "2.2.1"
+navigationFragment = "2.8.9"
+navigationUi = "2.8.9"
+textRecognitionArabic = "16.0.0-beta3"
+ucrop = "2.2.10"
+imageLabelingDefaultCommon = "17.0.0"
+roomCommonJvm = "2.7.2"
+
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+mlkit-translate = { group = "com.google.mlkit", name = "translate", version = "17.0.3" }
+mlkit-text-recognition = {group = "com.google.mlkit", name = "text-recognition", version = "16.0.1"}
+camerax-core = { group = "androidx.camera", name = "camera-core", version = "1.4.2" }
+camerax-camera2 = { group = "androidx.camera", name = "camera-camera2", version = "1.4.2" }
+camerax-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version = "1.4.2" }
+camerax-view = { group = "androidx.camera", name = "camera-view", version = "1.4.2" }
+camerax-extensions = { group = "androidx.camera", name = "camera-extensions", version = "1.4.2" }
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+text-recognition-arabic = { module = "com.google.mlkit:text-recognition-arabic", version.ref = "textRecognitionArabic" }
+ucrop = { module = "com.github.yalantis:ucrop", version.ref = "ucrop" }
+image-labeling-default-common = { group = "com.google.mlkit", name = "image-labeling-default-common", version.ref = "imageLabelingDefaultCommon" }
+room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+

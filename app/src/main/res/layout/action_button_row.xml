@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    android:layoutDirection="ltr">
+    <ImageButton
+        android:id="@+id/textToSpeachBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/text_to_speech_24dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/speakerIconDescription" />
+    <ImageButton
+        android:id="@+id/favoriteBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/favorite_24dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/favoritesIconDescription" />
+    <ImageButton
+        android:id="@+id/copyBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/content_copy_24dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/copyIconDescription" />
+    <ImageButton
+        android:id="@+id/shareBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/share_24dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/searchIconDescription" />
+</LinearLayout>

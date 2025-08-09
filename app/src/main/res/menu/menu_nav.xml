@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_chooseLanguage"
+        android:icon="@drawable/language_24dp"
+        android:title="@string/chooseLanguage"/>
+    <item android:id="@+id/nav_translate"
+        android:icon="@drawable/translate_24dp"
+        android:title="@string/translate"/>
+    <item android:id="@+id/nav_ocr"
+        android:icon="@drawable/document_scanner_24dp"
+        android:title="@string/ocrImageToText"/>
+    <item android:id="@+id/nav_quiz_options"
+        android:icon="@drawable/quiz_24dp"
+        android:title="@string/quizzes"/>
+    <item android:id="@+id/nav_favorite"
+        android:icon="@drawable/favorite_24dp"
+        android:title="@string/favorites"/>
+    <item android:id="@+id/nav_object_recognition"
+        android:icon="@drawable/image_search_24dp"
+        android:title="@string/objectRecognition"/>
+    <item android:id="@+id/nav_history"
+        android:icon="@drawable/history_24dp"
+        android:title="@string/history"/>
+    <item android:id="@+id/nav_exit"
+        android:icon="@drawable/exit_app_24dp"
+        android:title="@string/exit"/>
+</menu>

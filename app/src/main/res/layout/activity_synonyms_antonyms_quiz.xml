@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/quiz_light_background"
+    tools:context=".activities.SynonymsAntonymsQuizActivity">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_main"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="16dp">
+            <LinearLayout
+                android:id="@+id/topBarSynonyms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <TextView
+                    android:id="@+id/tvSynAntQuestionCounter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/challenge_progress"
+                    android:textSize="18sp"
+                    android:textColor="@color/quiz_text_muted" />
+                <TextView
+                    android:id="@+id/tvSynAntScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/score_progress"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/quiz_text_primary" />
+            </LinearLayout>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/synAntWordCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@color/quiz_card_background"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"
+                app:contentPadding="16dp">
+                <TextView
+                    android:id="@+id/tvChallengeWord"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/word"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="@color/quiz_text_primary" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvSynAntInstruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/find_synonym"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/quiz_text_primary"
+                android:gravity="center" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupSynAntOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+                <RadioButton
+                    android:id="@+id/rbSynAntOptionA"
+                    style="@style/QuizOptionRadioButton"/>
+                <RadioButton
+                    android:id="@+id/rbSynAntOptionB"
+                    style="@style/QuizOptionRadioButton"/>
+                <RadioButton
+                    android:id="@+id/rbSynAntOptionC"
+                    style="@style/QuizOptionRadioButton"/>
+                <RadioButton
+                    android:id="@+id/rbSynAntOptionD"
+                    style="@style/QuizOptionRadioButton"/>
+            </RadioGroup>
+            <TextView
+                android:id="@+id/tvSynAntFeedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:layout_marginTop="12dp"
+                android:visibility="invisible" />
+            <Button
+                android:id="@+id/btnSynAntNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/next_question"
+                android:textSize="20sp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="24dp" android:backgroundTint="@color/quiz_button_bg"
+                android:textColor="@color/quiz_button_text"
+                android:elevation="6dp"
+                app:cornerRadius="24dp"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

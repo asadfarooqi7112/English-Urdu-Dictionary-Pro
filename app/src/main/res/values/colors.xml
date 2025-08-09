@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey">#757575</color>
+    <color name="borderColor">#D3D3D3</color>
+
+    <color name="primaryColor">#007BFF</color>
+    <color name="primaryDarkColor">#333333</color>
+    <color name="primaryVariant">#28A745</color>
+    <color name="backgroundColor">#F5F5F5</color>
+    <color name="textColor">#333333</color>
+    <color name="secondaryTextColor">#6C757D</color>
+    <color name="buttonColor">#66AFFF</color>
+    <color name="errorColor">#DC3545</color>
+    <color name="dimmed_color">#B3000000</color>
+
+    <color name="quiz_light_background">@color/backgroundColor</color>
+    <color name="quiz_card_background">@color/white</color>
+    <color name="quiz_text_primary">@color/textColor</color>
+    <color name="quiz_text_muted">@color/secondaryTextColor</color>
+    <color name="quiz_option_default_bg">#E0E0E0</color>
+    <color name="quiz_option_selected_bg">@color/buttonColor</color>
+    <color name="quiz_option_border_default">#CCCCCC</color>
+    <color name="quiz_button_bg">@color/primaryColor</color>
+    <color name="quiz_button_text">@color/white</color>
+    <color name="quiz_feedback_correct">@color/primaryVariant</color>
+    <color name="quiz_feedback_incorrect">@color/errorColor</color>
+    <color name="quiz_option_correct_highlight">#A5D6A7</color>
+    <color name="quiz_option_incorrect_highlight">#EF9A9A</color>
+
+    <color name="quiz_hint_button_bg_soft">#FFFDE7</color>
+    <color name="quiz_hint_button_text_dark">#424242</color>
+
+    <color name="quiz_button_bg_default_option">#E0E0E0</color>
+    <color name="quiz_button_bg_pressed">#BDBDBD</color>
+    <color name="quiz_button_bg_selected">#BBDEFB</color>
+    <color name="quiz_correct_answer_bg_tint">#8BC34A</color>
+    <color name="quiz_incorrect_answer_bg_tint">#FF5252</color>
+
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+
+    <color name="quiz_background">#F8F9FA</color>
+    <color name="quiz_text_secondary">#424242</color>
+    <color name="quiz_border_color">#E0E0E0</color>
+    <color name="quiz_button_bg_main">#4285F4</color>
+    <color name="quiz_button_text_main">#FFFFFF</color>
+    <color name="quiz_button_bg_main_pressed">#3367D6</color>
+    <color name="quiz_option_bg_default">#F0F0F0</color>
+    <color name="quiz_option_text_default">#212121</color>
+    <color name="quiz_option_bg_pressed">#E6EEF9</color>
+    <color name="quiz_option_border_pressed">#A9D3F8</color>
+    <color name="quiz_option_bg_selected">#BBDEFB</color>
+    <color name="quiz_option_border_selected">#64B5F6</color>
+    <color name="quiz_highlight_correct">#C8E6C9</color>
+    <color name="quiz_highlight_correct_border">#81C784</color>
+    <color name="quiz_highlight_incorrect">#FFCDD2</color>
+    <color name="quiz_highlight_incorrect_border">#EF9A9A</color>
+
+
+    <color name="quiz_primary">#4CAF50</color>
+    <color name="quiz_accent">#FFC107</color>
+    <color name="quiz_text_accent">#009688</color>
+    <color name="button_background_default">#2196F3</color>
+    <color name="button_background_pressed">#1976D2</color>
+    <color name="button_text_color">#FFFFFF</color>
+
+    <color name="favorite_quiz_background">#E0F7FA</color>
+    <color name="quiz_progress_bar_color">#FF5722</color>
+    <color name="button_default_start">#6200EE</color>
+    <color name="button_default_end">#3700B3</color>
+    <color name="button_pressed_start">#4D00B0</color>
+    <color name="button_pressed_end">#2C007C</color>
+    <color name="button_secondary_default_start">#FF5722</color>
+    <color name="button_secondary_default_end">#E64A19</color>
+    <color name="button_secondary_pressed_start">#D84315</color>
+    <color name="button_secondary_pressed_end">#BF360C</color>
+
+</resources>

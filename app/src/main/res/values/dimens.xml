@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="letter_box_size">42dp</dimen>
+    <dimen name="letter_box_margin">2dp</dimen>
+    <dimen name="option_button_margin">4dp</dimen>
+</resources>

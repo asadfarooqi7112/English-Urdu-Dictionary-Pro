@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Info -->
+    <string name="app_name" translatable="false">English Urdu Dictionary Pro</string>
+    <string name="in_app_name">Dictionary</string>
+
+    <!-- Search -->
+    <string name="searchBar_hint" translatable="false">Search here…</string>
+
+    <!-- Navigation Drawer -->
+    <string name="nav_open_drawer" translatable="false">Open navigation drawer</string>
+    <string name="nav_close_drawer" translatable="false">Close navigation drawer</string>
+
+    <!-- Home Screen -->
+    <string name="wordOfTheDayHeading">Word of the Day</string>
+    <string name="translate">Translate</string>
+    <string name="translateIconDescription" translatable="false">Translate Icon</string>
+    <string name="OCR">OCR</string>
+    <string name="OCRIconDescription" translatable="false">OCR Icon</string>
+    <string name="favorites">Favorites</string>
+    <string name="favoritesIconDescription" translatable="false">Favorite Icon</string>
+    <string name="objectRecognition">Object Recognition</string>
+    <string name="object_recognition2">Object\nRecognition</string>
+    <string name="imageLabelling">Image Labelling</string>
+    <string name="imageRecognition">Image Recognition</string>
+
+    <!-- Quizzes -->
+    <string name="quizzes">Quizzes</string>
+    <string name="quizOptions">Quiz Options</string>
+    <string name="wordMeaningQuiz">Word Meaning Quiz</string>
+    <string name="synonymsAntonymsQuiz">Synonyms/Antonyms Quiz</string>
+    <string name="spellingQuiz">Spelling Quiz</string>
+    <string name="choose_your_quiz">Choose Your Quiz</string>
+    <string name="word_meaning_quiz">Word Meaning Quiz</string>
+    <string name="synonyms_antonyms_quiz">Synonyms/Antonyms Quiz</string>
+    <string name="spelling_test">Spelling Test</string>
+    <string name="word_completion_quiz">Word Completion Quiz</string>
+    <string name="timed_quiz">Timed Quiz</string>
+    <string name="favorite_words_quiz">Quiz on Favorite Words</string>
+
+    <!-- Quiz Gameplay -->
+    <string name="word_progress">Word 1/10</string>
+    <string name="spelling_progress">Spelling 1/10</string>
+    <string name="challenge_progress">Challenge 1/10</string>
+    <string name="question_progress">Question 1/10</string>
+    <string name="score_progress">Score: 0</string>
+    <string name="question_counter">Question %1$d of %2$d</string>
+    <string name="quiz_score">Score: %d</string>
+    <string name="quiz_complete">Quiz Complete!</string>
+    <string name="your_score">Your Score: 0/0</string>
+    <string name="play_again">Play Again</string>
+    <string name="go_home">Go Home</string>
+
+    <!-- Quiz Question Content -->
+    <string name="word">Word</string>
+    <string name="meaning_placeholder">Meaning of the word will appear here.</string>
+    <string name="blank" translatable="false">_ _ _ _</string>
+    <string name="meaning_to_spell">Meaning of the word to spell</string>
+    <string name="hint">Hint</string>
+    <string name="get_hint">Get Hint</string>
+    <string name="check_spelling">Check Spelling</string>
+    <string name="submit_answer">Submit Answer</string>
+    <string name="feedback_placeholder">Feedback will appear here.</string>
+    <string name="next_question">Next Question</string>
+    <string name="next_word">Next Word</string>
+    <string name="find_synonym">Find the Synonym</string>
+    <string name="timer" translatable="false">00:15</string>
+    <string name="spell_word_instruction">Spell the word for this meaning:</string>
+    <string name="complete_word_prompt">Complete the word for this meaning:</string>
+
+    <!-- Favorites -->
+    <string name="example_favorite_word">Example Favorite Word</string>
+    <string name="remove_from_favorites" translatable="false">Remove from favorites</string>
+    <string name="no_favorites_message">No favorite words yet. Add some!</string>
+
+    <!-- History -->
+    <string name="history">History</string>
+    <string name="clear_history">Clear History</string>
+    <string name="no_search_history">No search history yet.</string>
+    <string name="delete_history_item" translatable="false">Delete history item</string>
+
+    <!-- Language & OCR -->
+    <string name="chooseLanguage">Choose Language</string>
+    <string name="change_app_language">Change App Language</string>
+    <string name="ocrImageToText">OCR (Image to text)</string>
+    <string name="detected_text_here">Detected Text Here</string>
+
+    <!-- General -->
+    <string name="exit">Exit</string>
+    <string name="english">English</string>
+    <string name="urdu">Urdu</string>
+    <string name="typeHere">Type here…</string>
+
+    <!-- Image Picker Dialog -->
+    <string name="imageDialogBoxTitle">Image Selection</string>
+    <string name="imageDialogBoxMessage">Select an image from the gallery or take a picture with the camera.</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+
+    <!-- Icons -->
+    <string name="shareIconDescription" translatable="false">Share Icon</string>
+    <string name="speakerIconDescription" translatable="false">Speaker Icon</string>
+    <string name="copyIconDescription" translatable="false">Copy Icon</string>
+    <string name="closeIconDescription" translatable="false">Close Icon</string>
+    <string name="deleteIconDescription" translatable="false">Delete Icon</string>
+    <string name="swapIconDescription" translatable="false">Swap Icon</string>
+    <string name="dictionaryIconDescription" translatable="false">Dictionary Icon</string>
+    <string name="micIconDescription" translatable="false">Mic Icon</string>
+    <string name="searchIconDescription" translatable="false">Search Icon</string>
+    <string name="ukFlagIconDescription" translatable="false">UK Flag Icon</string>
+    <string name="pkFlagIconDescription" translatable="false">PK flag Icon</string>
+
+    <!-- Image Labeling Info -->
+    <string name="imageLabellingResult" translatable="false">Image Labelling Result</string>
+    <string name="image_labeling_explanation">
+        * Image Labeling: Assigns a label to the entire image.\n\n
+        * Object Recognition: Detects and identifies specific objects within the image and locates them.\n\n
+        * This model offers a basic level of functionality. We\'re actively developing it to deliver more precise results.\n\n
+        * Result: The identified labels will appear here.
+    </string>
+
+    <!-- Error/Network -->
+    <string name="downloadingContentMessage">Downloading resources\nplease wait…</string>
+    <string name="translation_failed">Translation failed: %1$s</string>
+    <string name="no_internet_message" translatable="false">No internet connection. Please connect to the internet to download necessary resources.</string>
+    <string name="internet_required_retry" translatable="false">Internet connection required for download. Please check your connection and retry.</string>
+    <string name="download_failed_retry" translatable="false">Download failed. Please try again.</string>
+    <string name="not_enough_space_retry" translatable="false">Not enough space on device. Please free up some space and retry.</string>
+    <string name="retry_button" translatable="false">Retry</string>
+
+</resources>
