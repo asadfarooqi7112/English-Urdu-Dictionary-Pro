@@ -396,6 +396,11 @@ public class WordCompletionQuizActivity extends AppCompatActivity {
             dbHelper.closeDatabase();
         }
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     private String capitalizeFirstLetter(String text) {
         if (text == null || text.isEmpty()) {

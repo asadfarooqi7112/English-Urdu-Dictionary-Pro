@@ -1,23 +1,25 @@
-// src/main/java/com/hfad/personaldictionary/models/WordHistoryEntry.java
 package com.hfad.personaldictionary.models;
 
 public class WordHistoryEntry {
     private long id; // This is the history table ID, not the word's ID
     private String word;
-    private int wordEnglishId; // NEW: Stores the ID of the word from the main dictionary
+    private long wordEnglishId; // Changed to long to match database
+    private boolean isLanguageEnglish; // NEW: Stores the language of the word
     private long timestamp;
 
-    public WordHistoryEntry(long id, String word, int wordEnglishId, long timestamp) {
+    public WordHistoryEntry(long id, String word, long wordEnglishId, boolean isLanguageEnglish, long timestamp) {
         this.id = id;
         this.word = word;
         this.wordEnglishId = wordEnglishId;
+        this.isLanguageEnglish = isLanguageEnglish;
         this.timestamp = timestamp;
     }
 
     // Constructor for adding a new entry
-    public WordHistoryEntry(String word, int wordEnglishId) {
+    public WordHistoryEntry(String word, long wordEnglishId, boolean isLanguageEnglish) {
         this.word = word;
         this.wordEnglishId = wordEnglishId;
+        this.isLanguageEnglish = isLanguageEnglish;
         this.timestamp = System.currentTimeMillis();
     }
 
@@ -40,12 +42,22 @@ public class WordHistoryEntry {
         this.word = word;
     }
 
-    public int getWordEnglishId() {
+    public long getWordEnglishId() {
         return wordEnglishId;
     }
 
-    public void setWordEnglishId(int wordEnglishId) {
+    public void setWordEnglishId(long wordEnglishId) {
         this.wordEnglishId = wordEnglishId;
+    }
+
+    // NEW: Getter for the language flag
+    public boolean isLanguageEnglish() {
+        return isLanguageEnglish;
+    }
+
+    // NEW: Setter for the language flag
+    public void setLanguageEnglish(boolean isLanguageEnglish) {
+        this.isLanguageEnglish = isLanguageEnglish;
     }
 
     public long getTimestamp() {

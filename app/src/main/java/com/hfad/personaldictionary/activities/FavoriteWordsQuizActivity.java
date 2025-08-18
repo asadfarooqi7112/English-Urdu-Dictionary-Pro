@@ -15,6 +15,7 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -25,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -269,7 +271,6 @@ public class FavoriteWordsQuizActivity extends AppCompatActivity {
         questionList = new ArrayList<>(); // Initialize the main list
         List<WordData> allWordsWithMeaning = new ArrayList<>();
 
-        // --- NEW LOGIC STARTS HERE ---
         // 1. Get a list of all favorite words from the new helper
         FavoriteWordsDbHelper favoriteWordsDbHelper = new FavoriteWordsDbHelper(this);
         List<FavoriteWord> favoriteWordList = favoriteWordsDbHelper.getAllFavoriteWords();
@@ -284,10 +285,16 @@ public class FavoriteWordsQuizActivity extends AppCompatActivity {
         Cursor meaningCursor = null;
         try {
             for (FavoriteWord favoriteWord : favoriteWordList) {
-                String word = favoriteWord.getWord();
+                // Filter out any non-English words as requested
+                if (!favoriteWord.isLanguageEnglish()) {
+                    continue;
+                }
 
-                // Use the main dbHelper to get the definition for this specific word
-                meaningCursor = dbHelper.getAllDefinitionsForWord(word);
+                String word = favoriteWord.getWord();
+                boolean isEnglish = favoriteWord.isLanguageEnglish(); // Get the language from the model
+
+                // Pass the correct language flag from the FavoriteWord object
+                meaningCursor = dbHelper.getAllDefinitionsForWord(word, isEnglish);
                 if (meaningCursor != null && meaningCursor.moveToFirst()) {
                     String meaning = meaningCursor.getString(meaningCursor.getColumnIndexOrThrow("urdu_meaning"));
 
@@ -303,11 +310,10 @@ public class FavoriteWordsQuizActivity extends AppCompatActivity {
             Log.e("FavoriteQuizActivity", "Error loading words from database for quiz: " + e.getMessage(), e);
             return;
         }
-        // --- NEW LOGIC ENDS HERE ---
 
         // Now, continue with your existing quiz generation logic
-        if (allWordsWithMeaning.size() == 0) {
-            Log.d("FavoriteQuizActivity", "No favorite words with meanings found in database to generate quiz.");
+        if (allWordsWithMeaning.size() < MAX_QUIZ_QUESTIONS) {
+            Log.d("FavoriteQuizActivity", "Not enough English favorite words with meanings to generate quiz.");
             return;
         }
 
@@ -882,7 +888,7 @@ public class FavoriteWordsQuizActivity extends AppCompatActivity {
 
         // Check if we were able to load new questions
         if (questionList.isEmpty()) {
-            Toast.makeText(this, "Not enough words available to start a new quiz.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Not enough English words available to start a new quiz.", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -912,5 +918,10 @@ public class FavoriteWordsQuizActivity extends AppCompatActivity {
             }
         }
         return sb.toString();
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

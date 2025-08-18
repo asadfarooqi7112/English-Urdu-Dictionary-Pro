@@ -1,4 +1,3 @@
-// src/main/java/com/hfad/personaldictionary/database/HistoryDatabaseHelper.java
 package com.hfad.personaldictionary.database;
 
 import android.content.ContentValues;
@@ -15,12 +14,13 @@ import java.util.List;
 public class HistoryDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "History.db";
-    private static final int DATABASE_VERSION = 2; // NEW: Increment the version to trigger onUpgrade
+    private static final int DATABASE_VERSION = 3; // MODIFIED: Increment the version to trigger onUpgrade
 
     public static final String TABLE_NAME = "word_history";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_WORD = "word";
-    public static final String COLUMN_WORD_ENGLISH_ID = "word_english_id"; // NEW COLUMN
+    public static final String COLUMN_WORD_ENGLISH_ID = "word_english_id";
+    public static final String COLUMN_IS_ENGLISH = "is_english"; // NEW: Column for language flag
     public static final String COLUMN_TIMESTAMP = "timestamp";
 
     public HistoryDatabaseHelper(Context context) {
@@ -32,7 +32,8 @@ public class HistoryDatabaseHelper extends SQLiteOpenHelper {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_WORD + " TEXT NOT NULL, " +
-                COLUMN_WORD_ENGLISH_ID + " INTEGER NOT NULL, " + // ADDED COLUMN
+                COLUMN_WORD_ENGLISH_ID + " INTEGER NOT NULL, " +
+                COLUMN_IS_ENGLISH + " INTEGER NOT NULL, " + // ADDED COLUMN
                 COLUMN_TIMESTAMP + " INTEGER NOT NULL);";
         db.execSQL(CREATE_TABLE);
     }
@@ -46,12 +47,12 @@ public class HistoryDatabaseHelper extends SQLiteOpenHelper {
 
     // --- CRUD Operations ---
 
-    // MODIFIED: Added wordEnglishId parameter
-    public void addHistoryEntry(String word, long wordEnglishId) {
+    public void addHistoryEntry(String word, long wordEnglishId, boolean isLanguageEnglish) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_WORD, word);
         values.put(COLUMN_WORD_ENGLISH_ID, wordEnglishId);
+        values.put(COLUMN_IS_ENGLISH, isLanguageEnglish ? 1 : 0); // NEW: Save boolean as an integer
         values.put(COLUMN_TIMESTAMP, System.currentTimeMillis());
         db.insert(TABLE_NAME, null, values);
         db.close();
@@ -67,9 +68,10 @@ public class HistoryDatabaseHelper extends SQLiteOpenHelper {
             do {
                 long id = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID));
                 String word = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_WORD));
-                int wordEnglishId = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_WORD_ENGLISH_ID)); // NEW
+                long wordEnglishId = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_WORD_ENGLISH_ID)); // MODIFIED: Use long to match data type
+                boolean isEnglish = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_ENGLISH)) == 1; // NEW: Retrieve boolean
                 long timestamp = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_TIMESTAMP));
-                historyList.add(new WordHistoryEntry(id, word, wordEnglishId, timestamp));
+                historyList.add(new WordHistoryEntry(id, word, wordEnglishId, isEnglish, timestamp));
             } while (cursor.moveToNext());
         }
 

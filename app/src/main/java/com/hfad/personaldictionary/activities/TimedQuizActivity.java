@@ -1099,4 +1099,9 @@ public class TimedQuizActivity extends AppCompatActivity {
         }
         return sb.toString();
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }

@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DatabaseHelper {
-    private static final String DB_NAME = "our_database.db";
+    private static final String DB_NAME = "english_dictionary_database.db";
     private final Context context;
     private final String DB_PATH;
     private SQLiteDatabase database;
@@ -317,12 +317,15 @@ public class DatabaseHelper {
 
             // Urdu Query (simpler query as per your request)
             // This example performs a simple LIKE search and orders alphabetically
-            query = "SELECT urdu_meaning AS word, MIN(rowid) AS _id " + // Inlined "_id" and "urdu_word"
-                    "FROM " + tableName +
-                    " WHERE urdu_meaning LIKE ? " +
-                    " ORDER BY urdu_meaning ASC";
+            query = "SELECT " + columnName + " AS word, MIN(rowid) AS _id " +
+                    "FROM (" +
+                    "  SELECT " + columnName + ", rowid FROM " + tableName +
+                    "  WHERE " + columnName + " LIKE ?" +
+                    ") AS cleaned " +
+                    "GROUP BY " + columnName + " " +
+                    "ORDER BY CASE WHEN " + columnName + " = ? THEN 0 ELSE 1 END, " + columnName + " ASC";
 
-            queryArgs = new String[]{"%" + queryWord + "%"};
+            queryArgs = new String[]{"%" + queryWord + "%", queryWord};
         }else{
             tableName = "eng_urdu_words";
             columnName = "word";
@@ -348,17 +351,26 @@ public class DatabaseHelper {
         return cursor;
     }
 
-    public Cursor getAllDefinitionsForWord(String word) {
-        openDatabase(); // Ensure database is open and migrated
+    public Cursor getAllDefinitionsForWord(String word, boolean isLanguageEnglish) {
+        openDatabase();
 
-        // Original query (assuming 'example_sentence' does not exist in Version 1)
-        String query = "SELECT * " +
-                "FROM eng_urdu_words " +
-                "WHERE LOWER(word) = LOWER(?)";
+        String query;
+        String[] selectionArgs = new String[]{word};
 
-        return database.rawQuery(query, new String[]{word});
+        if (isLanguageEnglish) {
+            // Query for English word search
+            query = "SELECT * " +
+                    "FROM eng_urdu_words " +
+                    "WHERE LOWER(word) = LOWER(?)";
+        } else {
+            // Query for Urdu word search
+            query = "SELECT * " +
+                    "FROM eng_urdu_words " +
+                    "WHERE urdu_meaning = ? COLLATE NOCASE";
+        }
+
+        return database.rawQuery(query, selectionArgs);
     }
-
     public Map<String, Object> getTodaysWord() {
         Cursor wordCursor = null;
         SpannableStringBuilder todaysWordString = new SpannableStringBuilder();
@@ -442,7 +454,6 @@ public class DatabaseHelper {
                 null, null, null, null, null
         );
     }
-    // In your DatabaseHelper.java
     public Cursor getWordsWithMeanings() {
         openDatabase(); // Make sure the database is open
         // Assuming your table is 'eng_urdu_words' and columns are 'word' and 'meaning'

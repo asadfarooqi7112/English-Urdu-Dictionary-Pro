@@ -362,7 +362,11 @@ public class WordMeaningQuizActivity extends AppCompatActivity {
             dbHelper.closeDatabase();
         }
     }
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
     // --- NEW HELPER METHOD ---
     private String capitalizeFirstLetter(String text) {
         if (text == null || text.isEmpty()) {

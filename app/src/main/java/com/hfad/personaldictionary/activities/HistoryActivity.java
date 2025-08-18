@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hfad.personaldictionary.R;
-import com.hfad.personaldictionary.activities.WordDetailsActivity;
 import com.hfad.personaldictionary.adapters.HistoryAdapter;
 import com.hfad.personaldictionary.models.WordHistoryEntry;
 import com.hfad.personaldictionary.database.HistoryDatabaseHelper; // NEW
@@ -116,6 +115,8 @@ public class HistoryActivity extends AppCompatActivity
         Intent intent = new Intent(this, WordDetailsActivity.class);
         intent.putExtra("word", entry.getWord());    // Pass the word
         intent.putExtra("word_id", entry.getId());   // Pass the ID!
+        // The crucial change: pass the language flag from the history entry
+        intent.putExtra("searchLangCode", entry.isLanguageEnglish());
         intent.putExtra("caller", "HistoryActivity");
         startActivity(intent);
     }

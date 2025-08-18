@@ -106,6 +106,9 @@ public class TranslateActivity extends AppCompatActivity {
         clearAllText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (textToSpeech != null && textToSpeech.isSpeaking()) {
+                    textToSpeech.stop();
+                }
                 inputText.setText("");
             }
         });
@@ -114,6 +117,9 @@ public class TranslateActivity extends AppCompatActivity {
         swapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (textToSpeech != null && textToSpeech.isSpeaking()) {
+                    textToSpeech.stop();
+                }
                 if(isInputEnglish){
                     inputLanguage.setText(getResources().getString(R.string.urdu));
                     inputLanguageLogo.setImageResource(R.drawable.pakistan_flag_round_circle_icon);
@@ -150,9 +156,16 @@ public class TranslateActivity extends AppCompatActivity {
 
         inputText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (textToSpeech != null && textToSpeech.isSpeaking()) {
+                    textToSpeech.stop();
+                }
+            }
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (textToSpeech != null && textToSpeech.isSpeaking()) {
+                    textToSpeech.stop();
+                }
                 if (charSequence.length() > 0) {
                     clearAllText.setVisibility(View.VISIBLE);
                 } else {
@@ -160,13 +173,20 @@ public class TranslateActivity extends AppCompatActivity {
                 }
             }
             @Override
-            public void afterTextChanged(Editable editable) {}
+            public void afterTextChanged(Editable editable) {
+                if (textToSpeech != null && textToSpeech.isSpeaking()) {
+                    textToSpeech.stop();
+                }
+            }
         });
 
         // Handle button click
         translateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (textToSpeech != null && textToSpeech.isSpeaking()) {
+                    textToSpeech.stop();
+                }
                 String input = inputText.getText().toString();
                 if(isInputEnglish){
                     translate(input, "en", "ur");
@@ -181,6 +201,7 @@ public class TranslateActivity extends AppCompatActivity {
         urduTextToSpeechBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // No need to stop TTS here since this is the button that starts it
                 textToSpeech = new TextToSpeech(TranslateActivity.this, new TextToSpeech.OnInitListener() {
                     @Override
                     public void onInit(int i) {
@@ -209,6 +230,9 @@ public class TranslateActivity extends AppCompatActivity {
         copyUrduBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (textToSpeech != null && textToSpeech.isSpeaking()) {
+                    textToSpeech.stop();
+                }
                 if(outputText.getText().toString().trim().isEmpty()){
                     Toast.makeText(TranslateActivity.this, "No text found. Please provide some text.", Toast.LENGTH_SHORT).show();
                 }else{
@@ -222,6 +246,9 @@ public class TranslateActivity extends AppCompatActivity {
         shareUrduBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (textToSpeech != null && textToSpeech.isSpeaking()) {
+                    textToSpeech.stop();
+                }
                 if(outputText.getText().toString().trim().isEmpty()){
                     Toast.makeText(TranslateActivity.this, "No text found. Please provide some text.", Toast.LENGTH_SHORT).show();
                 }else{
@@ -234,6 +261,9 @@ public class TranslateActivity extends AppCompatActivity {
         speechToTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (textToSpeech != null && textToSpeech.isSpeaking()) {
+                    textToSpeech.stop();
+                }
                 ContentAction.startSpeechToText(TranslateActivity.this, isInputEnglish);
             }
         });
@@ -242,6 +272,9 @@ public class TranslateActivity extends AppCompatActivity {
         copyEnglishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (textToSpeech != null && textToSpeech.isSpeaking()) {
+                    textToSpeech.stop();
+                }
                 if(inputText.getText().toString().trim().isEmpty()){
                     Toast.makeText(TranslateActivity.this, "No text found. Please provide some text.", Toast.LENGTH_SHORT).show();
                 }else{
@@ -254,6 +287,9 @@ public class TranslateActivity extends AppCompatActivity {
         imageToTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (textToSpeech != null && textToSpeech.isSpeaking()) {
+                    textToSpeech.stop();
+                }
                 if(isInputEnglish){
                     ContentAction.showDialog(TranslateActivity.this);
                 }else {
@@ -338,7 +374,9 @@ public class TranslateActivity extends AppCompatActivity {
 
     //Code for translating from english to urdu
     private void translate(String text, String sourceLangCode, String targetLangCode) {
-
+        if (textToSpeech != null && textToSpeech.isSpeaking()) {
+            textToSpeech.stop();
+        }
         TranslatorOptions options = new TranslatorOptions.Builder()
                 .setSourceLanguage(TranslateLanguage.fromLanguageTag(sourceLangCode))
                 .setTargetLanguage(TranslateLanguage.fromLanguageTag(targetLangCode))
@@ -400,11 +438,29 @@ public class TranslateActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    protected void onPause() {
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+        }
+        super.onPause();
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (translator != null) {
             translator.close(); // Close the translator to release resources
         }
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+        }
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

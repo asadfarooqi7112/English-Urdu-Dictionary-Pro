@@ -280,4 +280,9 @@ public class ObjectRecognition extends AppCompatActivity {
         }
 
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }

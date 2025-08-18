@@ -1,4 +1,3 @@
-// src/main/java/com/hfad/personaldictionary/activities/MainActivity.java
 package com.hfad.personaldictionary.activities;
 
 import android.Manifest;
@@ -343,12 +342,13 @@ public class MainActivity extends AppCompatActivity {
 
             // MODIFIED: Add both the word and the correct wordId to history
             executorService.execute(() -> {
-                historyDbHelper.addHistoryEntry(word, wordId);
+                historyDbHelper.addHistoryEntry(word, wordId,isInputLanguageEnglish);
             });
 
             Intent intent = new Intent(MainActivity.this, WordDetailsActivity.class);
             intent.putExtra("word", word);
             intent.putExtra("word_id", wordId);
+            intent.putExtra("searchLangCode",isInputLanguageEnglish);
             intent.putExtra("caller", "MainActivity");
 
             Log.d("MainActivity", "Launching WordDetailsActivity with:");
@@ -440,8 +440,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         updateFavoriteButtonState();
-
         favoriteBtn.setOnClickListener(view -> toggleFavorite());
+
         ImageButton copyBtn = findViewById(R.id.copyBtn);
         copyBtn.setOnClickListener(view -> {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
@@ -459,7 +459,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             if (displayedWordMeaning != null) {
-                intent.putExtra(Intent.EXTRA_TEXT, displayedWordMeaning);
+                intent.putExtra(Intent.EXTRA_TEXT, displayedWordMeaning.toString());
                 startActivity(Intent.createChooser(intent, "Share via"));
             } else {
                 Toast.makeText(MainActivity.this, "Nothing to share.", Toast.LENGTH_SHORT).show();
@@ -735,7 +735,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Failed to remove " + wordExtracted + " from favorites.", Toast.LENGTH_SHORT).show();
             }
         } else {
-            long newRowId = favoriteWordsDbHelper.addFavoriteWord(new FavoriteWord(wordExtracted, todaysWordId));
+            long newRowId = favoriteWordsDbHelper.addFavoriteWord(new FavoriteWord(wordExtracted, todaysWordId, true, System.currentTimeMillis()));
             if (newRowId != -1) {
                 Toast.makeText(this, wordExtracted + " added to favorites!", Toast.LENGTH_SHORT).show();
             } else {
